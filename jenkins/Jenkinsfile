@@ -3,10 +3,21 @@ pipeline {
 
     tools {
         // Ensure this matches the exact name of your JDK installation in Jenkins
-        jdk 'java-8-openjdk-amd64'
+        jdk 'openjdk-jdk8u422'
     }
 
     stages {
+    
+    	stage('Example'){
+    		steps{
+		 sh '''
+		   env | grep -e PATH -e JAVA_HOME
+		   which java
+		   java -version
+		 '''    		
+    		}
+    	}
+    
         stage('Setup') {
             steps {
                 // Verify Java installation
