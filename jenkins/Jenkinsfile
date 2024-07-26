@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    
+     environment {
+        // Set JAVA_HOME to JDK 8 installation directory
+        JAVA_HOME = '/usr/lib/jvm/java-8-openjdk-amd64'
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+    }
 
     tools {
         // Replace 'java-8-openjdk-amd64' with the name of your JDK in Jenkins
