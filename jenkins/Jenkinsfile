@@ -1,20 +1,28 @@
 pipeline {
     agent any
+
+    tools {
+        // Replace 'java-8-openjdk-amd64' with the name of your JDK in Jenkins
+        jdk 'java-8-openjdk-amd64'
+        // Replace 'Maven 3.6.3' with the name of your Maven installation in Jenkins
+        maven 'Maven 3.6.3'
+    }
+
     stages {
-        stage('Build') {
+        stage('Setup') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                // Verify Java installation
+                sh 'java -version'
+                // Verify Maven installation
+                sh 'mvn -version'
             }
         }
-        stage('Test') { 
+        stage('Build') {
             steps {
-                sh 'mvn test' 
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml' 
-                }
+                // Run a Maven build to check everything is set up correctly
+                sh 'mvn clean install'
             }
         }
     }
 }
+
