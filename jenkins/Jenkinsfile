@@ -4,8 +4,6 @@ pipeline {
     tools {
         // Replace 'java-8-openjdk-amd64' with the name of your JDK in Jenkins
         jdk 'java-8-openjdk-amd64'
-        // Replace 'Maven 3.6.3' with the name of your Maven installation in Jenkins
-        maven 'Maven 3.6.3'
     }
 
     stages {
